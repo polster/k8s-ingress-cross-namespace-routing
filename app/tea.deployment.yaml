@@ -1,0 +1,25 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: tea
+  name: tea-api
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: tea-api
+  template:
+    metadata:
+      labels:
+        app: tea-api
+    spec:
+      containers:
+      - name: tea-api
+        image: 
+          ealen/echo-server:latest
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 80

@@ -1,0 +1,25 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: coffee
+  name: coffee-api
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: coffee-api
+  template:
+    metadata:
+      labels:
+        app: coffee-api
+    spec:
+      containers:
+      - name: coffee-api
+        image: 
+          ealen/echo-server:latest
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 80

@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: tea-svc-bridge
+  namespace: shop
+spec:
+  type: ExternalName
+  externalName: tea-api.tea
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 80

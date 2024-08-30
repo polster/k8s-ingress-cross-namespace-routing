@@ -1,0 +1,26 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: shop-ingress
+  namespace: shop
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
+spec:
+  ingressClassName: nginx
+  rules:
+  - http:
+      paths:
+      - path: "/coffee(/|$)(.*)"
+        pathType: Prefix
+        backend:
+          service:
+            name: coffee-svc-bridge
+            port:
+              number: 80
+      - path: "/tea(/|$)(.*)"
+        pathType: Prefix
+        backend:
+          service:
+            name: tea-svc-bridge
+            port:
+              number: 80
