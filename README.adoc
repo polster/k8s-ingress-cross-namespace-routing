@@ -9,6 +9,10 @@ This project provides a working demo, how to route traffic across namespaces in 
 
 To be able to run the demo locally, the project comes with its own `Kind` cluster setup.
 
+=== Architecture
+
+image:cross-ns-routing-kind.drawio.png[]
+
 === Prerequisites
 
 * Container runtime
